@@ -1,0 +1,62 @@
+<!-- Path to manifest.json -->
+<link rel="manifest" href="/manifest.json">
+
+<!-- Viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Add to homescreen for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="{{ APP_NAME }}">
+
+
+<!-- Chrome for Android theme color -->
+<meta name="theme-color" content="{{ APP_THEME_COLOR }}">
+
+<!-- Add to homescreen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="{{ APP_NAME }}">
+<meta name="apple-mobile-web-app-status-bar-style" content="{{ APP_STATUS_BAR_COLOR }}">
+
+{% if APP_ICONS_APPLE %}
+    {% for icon in APP_ICONS_APPLE %}
+        <link rel="apple-touch-icon" href="{{ icon.src }}" sizes="{{ icon.size }}">
+    {% endfor %}
+{% else %}
+    {% for icon in APP_ICONS %}
+        <link rel="apple-touch-icon" href="{{ icon.src }}" sizes="{{ icon.size }}">
+    {% endfor %}
+{% endif %}
+
+
+{% for splash in APP_SPLASH_SCREEN %}
+<link href="{{ splash.src }}" media="{{ splash.media }}" rel="apple-touch-startup-image"/>
+{% endfor %}
+
+
+<!-- Tile for Win8 -->
+<meta name="msapplication-TileColor" content="{{ APP_BACKGROUND_COLOR }}">
+{% with APP_ICONS|last as icon %}
+<meta name="msapplication-TileImage" content="{{ icon.src }}">
+
+
+<link rel="icon" sizes="{{ icon.size }}" href="{{ icon.src }}">
+{% endwith %}
+
+<script type="text/javascript">
+    // Initialize the service worker
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/serviceworker.js', {
+            scope: '{{ APP_SCOPE }}'
+        }).then(function (registration) {
+            // Registration was successful
+            {% if APP_DEBUG_MODE %}
+            console.log('django-NG: ServiceWorker registration successful with scope: ', registration.scope);
+            {% endif %}
+        }, function (err) {
+            // registration failed :(
+            {% if APP_DEBUG_MODE %}
+            console.log('django-NG: ServiceWorker registration failed: ', err);
+            {% endif %}
+        });
+    }
+</script>

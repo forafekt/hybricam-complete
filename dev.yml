@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.dev
+    depends_on:
+      - redis
+    volumes:
+      - .:/app
+    env_file: .env
+    ports:
+      - "8000:8000"
+    command: /local_start.sh
+  redis:
+    image: redis:latest
+    ports:
+      - '6380:6380'

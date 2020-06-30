@@ -1,0 +1,5 @@
+{% load static %}
+{% load serve_tags %}
+{% for js in JAVASCRIPT_PATH %}
+<script src="{{ js.src }}"></script>
+{% endfor %}

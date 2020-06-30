@@ -1,0 +1,60 @@
+ {% load static i18n %}
+{% load thumbnail %}
+{% load humanize thumbnail %}
+  <div class="container card-body">
+    <div id="contact-info" class="vcard">
+      {% thumbnail object.picture "x100" as im %}
+      <img src="{{ im.url }}" alt="Picture Profile" id="pic">
+    {% empty %}
+      <img src="{% static 'img/user.png' %}" alt="No Profile Picture" id="pic"/>
+    {% endthumbnail %}
+        <h1 class="fn">
+          {{ object.username|title }}
+          {% if object.short_bio %}
+            <br /><small style="font-size: 50%">{{ object.short_bio }}</small>
+          {% endif %}
+
+
+        {% include 'includes/follow_form.html' %}
+
+
+            <!-- request.user.is_following.all -->
+
+        </h1>
+
+
+        {% if request.user.username == object.username %}
+        <a class="btn btn-link float-right" href="{% url 'users:update' %}">{% trans 'Update Profile' %}</a>
+      {% endif %}
+
+        <p>
+          <i class="fas fa-user-circle" aria-hidden="true"></i>
+          {{ object.get_profile_name|title }}
+          <br />
+          <i class="fas fa-envelope" aria-hidden="true"></i><a class="email" href="mailto:{{ object.email }}">   {{ object.email }}</a><br />
+          {% if object.job_title %}
+            <i class="fas fa-briefcase" aria-hidden="true"></i>  {{ object.job_title }} <br />
+          {% endif %}
+          {% if object.location %}
+            <i class="fas fa-map-marker" aria-hidden="true"></i>  {{ object.location }} <br />
+          {% endif %}
+        </p>
+    </div>
+    <div id="objective"><p>{{ object.bio }}</p></div>
+    <div class="clear"></div>
+    {% if object.personal_url %}
+      <a href="{{ object.personal_url }}" style="font-size: 2em" title="{% trans 'RSS Channel' %}"><i class="fas fa-rss"></i>  </a>
+    {% endif %}
+    {% if object.twitter_account %}
+      <a href="{{ object.twitter_account }}" style="font-size: 2em" title="{% trans 'Twitter Profile' %}"><i class="fab fa-twitter"></i>  </a>
+    {% endif %}
+    {% if object.github_account %}
+      <a href="{{ object.github_account }}" style="font-size: 2em" title="{% trans 'Github Profile' %}"><i class="fab fa-github"></i>  </a>
+    {% endif %}
+    {% if object.linkedin_account %}
+      <a href="{{ object.linkedin_account }}" style="font-size: 2em" title="{% trans 'LinkedIn Profile' %}"><i class="fab fa-linkedin"></i>  </a>
+    {% endif %}
+    {% if object.facebook_account %}
+      <a href="{{ object.facebook_account }}" style="font-size: 2em" title="{% trans 'Facebook Profile' %}"><i class="fab fa-facebook"></i>  </a>
+    {% endif %}
+  </div>

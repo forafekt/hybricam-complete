@@ -1,0 +1,1 @@
+web: daphne -b 0.0.0.0 -p $PORT --ws-protocol "graphql-ws" --proxy-headers config.asgi:application

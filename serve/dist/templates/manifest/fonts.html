@@ -1,0 +1,5 @@
+{% load static %}
+{% load serve_tags %}
+{% for font in FONT_PATH %}
+<link href="{{ font.src }}" rel="stylesheet" type="text/css"/>
+{% endfor %}

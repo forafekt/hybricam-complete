@@ -1,0 +1,15 @@
+# PRECAUTION: avoid production dependencies that aren't in development
+
+-r base.txt
+-r local.txt  # comment out for production.
+
+boto3  # pyup: update minor  # https://github.com/boto/boto3
+#gevent==20.4.0  # https://github.com/gevent/gevent
+raven  # https://github.com/getsentry/raven-python
+# psycopg2  # --no-binary psycopg2  # https://github.com/psycopg/psycopg2
+
+# Django
+# ------------------------------------------------------------------------------
+django-storages  # https://github.com/jschneier/django-storages
+cloudinary # https://pypi.org/project/cloudinary/
+dj3-cloudinary-storage # https://github.com/tiagocordeiro/dj3-cloudinary-storage

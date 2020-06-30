@@ -1,0 +1,27 @@
+-r ./base.txt
+
+ipdb #  https://github.com/gotcha/ipdb
+Werkzeug  # https://github.com/pallets/werkzeug
+psycopg2-binary # https://github.com/psycopg/psycopg2
+# ng2django
+# Testing
+# ------------------------------------------------------------------------------
+#pytest  # https://github.com/pytest-dev/pytest
+#pytest-cov  # https://github.com/pytest-dev/pytest-cov
+#pytest-sugar  # https://github.com/Frozenball/pytest-sugar
+#pytest-django  # https://github.com/pytest-dev/pytest-django
+
+# Code quality
+# ------------------------------------------------------------------------------
+#coverage  # https://github.com/nedbat/coveragepy
+#bandit  # https://github.com/PyCQA/bandit
+#pylint-common  # https://github.com/landscapeio/pylint-common
+#pylint-django  # https://github.com/PyCQA/pylint-django
+#pylint  # https://github.com/PyCQA/pylint
+#black  # https://github.com/psf/black
+#flake8  # https://github.com/pycqa/flake8
+
+# Django
+# ------------------------------------------------------------------------------
+#django-coverage-plugin  # https://github.com/nedbat/django_coverage_plugin
+#django-test-plus  # https://github.com/revsys/django-test-plus

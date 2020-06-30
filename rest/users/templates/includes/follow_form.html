@@ -1,0 +1,28 @@
+{% load static i18n %}
+
+<div class="follow-toggle m-auto p-2 container">
+    <a type="button"
+     href="#"
+     class="follow btn btn-outline-light"
+     title="{% for i in follow.get_followers %}{{ i }}&#10;{% endfor %}">
+    {% if request.user in follow.get_followers %}
+      <button class="follow btn btn-dark" aria-hidden="true"><span>{% trans 'Unfollow' %}</span></button>
+    {% else %}
+      <button class="follow btn btn-success" aria-hidden="true"><span>{% trans 'Follow' %}</span></button>
+    {% endif %}
+    <span class="like-count text-secondary">{{ follow.count_followers }}</span>
+</a>
+</div>
+<!--<div class="follow-toggle m-auto p-2 container">
+<form class="follow" method="POST" action="#" {% if request.user.username == object.username %} hidden {% endif %}>
+<input type="hidden" name="username" value="{% if request.user.username == object.username %}{{ username }}{% else %}{{ object.username }}{% endif %}">
+    <button
+            class="follow {% if request.user.is_following.filter %}btn btn-secondary{% else %}btn btn-primary{% endif %}">
+            {% if request.user.is_following.filter %}{% trans "Unfollow" %}{% else %}{% trans "Follow" %}{% endif %}
+    </button>
+    <span class="follow-count text-secondary">{{ request.user.is_following.count }}</span>
+</form>
+    </div>-->
+
+
+

@@ -1,0 +1,16 @@
+{% load serve_tags %}
+{
+  "name": {{ APP_NAME|ngjs }},
+  "short_name": {{ APP_NAME|ngjs }},
+  "description": {{ APP_DESCRIPTION|ngjs }},
+  "start_url": {{ APP_START_URL|ngjs }},
+  "display": {{ APP_DISPLAY|ngjs }},
+  "scope": {{ APP_SCOPE|ngjs }},
+  "orientation": {{ APP_ORIENTATION|ngjs }},
+  "background_color": {{ APP_BACKGROUND_COLOR|ngjs }},
+  "theme_color": {{ APP_THEME_COLOR|ngjs }},
+  "status_bar": {{ APP_STATUS_BAR_COLOR|ngjs }},
+  "icons": {{ APP_ICONS|ngjs }},
+  "dir": {{ APP_DIR|ngjs }},
+  "lang": {{ APP_LANG|ngjs }}
+}

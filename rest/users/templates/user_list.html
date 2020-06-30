@@ -1,0 +1,65 @@
+{% extends "_base.html" %}
+{% load static i18n %}
+{% load thumbnail %}
+{% block title %}{% trans 'Contacts' %}{% endblock %}
+
+{% block head %}
+  <link href="{% static 'css/user_list.css' %}" rel="stylesheet">
+{% endblock head %}
+
+{% block content %}
+
+
+<div class="row">
+  <div class="list col-lg-12">
+    <div class="page-header mt-5">
+    <h1>{% trans 'Find Friends' %}</h1>
+  </div>
+    <ul class="user-profiles-list float-left card bg-light col-lg-12">
+      {% for user in user_list %}
+        <li>
+          <div class="user-avatar">
+            <a href="{% url 'users:detail' user.username  %}" class="user-avatar">
+              {% thumbnail user.picture "x80" as im %}
+                <img src="{{ im.url }}" alt="{% trans 'Picture Profile' %}" id="pic" style="border-radius: 20%">
+              {% empty %}
+                <img src="{% static 'img/user.png' %}" alt="{% trans 'No Profile Picture' %}" style="border-radius: 20%" />
+              {% endthumbnail %}
+            </a>
+          </div>
+          <p>
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <a class="user" href="{% url 'users:detail' user.username  %}">
+              {{ user.get_profile_name|title }}
+            </a>
+            <span>
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <a class="email" href="mailto:{{ user.email }}">
+              {{ user.email }}
+            </a>
+            </span>
+            <span>
+              {% if user.job_title %}
+                <i class="fa fa-briefcase" aria-hidden="true"></i>
+                <i>  {{ user.job_title}}</i>
+              {% endif %}
+            </span>
+            <span>
+              {% if user.location %}
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <i>  {{ user.location }}</i>
+              {% endif %}
+            </span>
+          </p>
+          <span class="float-right btn btn-dark">
+              {# TEMP PLACEHOLDER #}
+                <a href="#" class="text-light"><i class="fas fa-user-plus" aria-hidden="true"></i>
+                  <i>  Follow</i></a>
+            </span>
+        </li><br>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% endblock content %}

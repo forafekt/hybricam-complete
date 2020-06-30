@@ -1,0 +1,10 @@
+{% load static i18n %}
+{% if user.is_authenticated %}
+<form class="form" method="POST" action="{% url 'follow' %}" {% if request.user.username == object.username %} hidden {% endif %}>{% csrf_token %}
+<input type="hidden" name="username" value="{% if self.user.username == object.username %}{{ username }}{% else %}{{ object.username }}{% endif %}">
+    <button
+            class="{% if self.user.is_following.filter %}btn btn-secondary{% else %}btn btn-primary{% endif %}">
+            {% if self.user.is_following.filter %}{% trans "Unfollow" %}{% else %}{% trans "Follow" %}{% endif %}
+    </button>
+</form>
+{% endif %}

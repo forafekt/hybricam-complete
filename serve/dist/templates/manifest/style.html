@@ -1,0 +1,5 @@
+{% load static %}
+{% load serve_tags %}
+{% for css in CSS_PATH %}
+<link href="{{ css.src }}" rel="stylesheet" type="text/css"/>
+{% endfor %}

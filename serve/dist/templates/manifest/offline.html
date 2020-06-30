@@ -1,0 +1,19 @@
+{% extends 'core/_index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static i18n %}
+  {% load serve_tags %}
+  {% block head %} {% endblock head %}
+  {% block title %} {% trans 'OFFLINE' %} {% endblock title %}
+  {% block css %} {% endblock css %}
+
+</head>
+<body>
+
+{% block content %}
+<h1>You are currently not connected to any networks.</h1>
+{% endblock content %}
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% load static i18n %}
+{% load thumbnail %}
+{% load humanize thumbnail %}
+    <!-- Data tiles -->
+    <div class="row tile_count col-lg-8 alert bg-white border">
+      <div class="col-md-2 col-sm-3 col-xs-4 tile_stats_count">
+        <span class="count_top"><i class="glyphicon glyphicon-envelope"></i> {% trans 'Projects' %}</span>
+        <div class="count">0</div>
+      </div>
+
+      <div class="col-md-2 col-sm-3 col-xs-4 tile_stats_count">
+        <span class="count_top"><i class="glyphicon glyphicon-pencil"></i> {% trans 'Articles' %}</span>
+        <div class="count">{{ articles_count }}</div>
+      </div>
+
+      <div class="col-md-2 col-sm-3 col-xs-4 tile_stats_count">
+        <span class="count_top"><i class="glyphicon glyphicon-comment"></i> {% trans 'Connections' %}</span>
+        <div class="count">{{ users_count }}</div>
+      </div>
+
+      <div class="col-md-2 col-sm-3 col-xs-4 tile_stats_count">
+        <span class="count_top"><i class="glyphicon glyphicon-question-sign"></i> {% trans 'Feeds' %}</span>
+        <div class="count">{{ news_count }}</div>
+      </div>
+
+      <div class="col-md-2 col-sm-3 col-xs-4 tile_stats_count">
+        <span class="count_top"><i class="glyphicon glyphicon-education"></i> {% trans 'Discussions' %}</span>
+        <div class="count">{{ questions_count }}</div>
+      </div>
+
+      <div class="col-md-2 col-sm-3 col-xs-4 tile_stats_count">
+        <span class="count_top"><i class="glyphicon glyphicon-fire"></i> {% trans 'User ID' %}</span>
+        <div class="count">:{{ user.id }}</div>
+      </div>
+    </div>
+    <!-- /data tiles -->
