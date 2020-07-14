@@ -66,77 +66,77 @@ APP_FETCH_URL = resolve_url(getattr(settings, 'APP_FETCH_URL', _SCRIPT_PREFIX))
 APP_STATUS_BAR_COLOR = getattr(settings, 'APP_STATUS_BAR_COLOR', 'default')
 APP_ICONS = getattr(settings, 'APP_ICONS', [
     {
-        'src': '/static/img/icon-72x72.png',
+        'src': '/assets/images/icon-72x72.png',
         'size': '72x72'
     },
     {
-        'src': '/static/img/icon-96x96.png',
+        'src': '/assets/images/icon-96x96.png',
         'size': '96x96'
     },
     {
-        'src': '/static/img/icon-128x128.png',
+        'src': '/assets/images/icon-128x128.png',
         'size': '128x128'
     },
     {
-        'src': '/static/img/icon-144x144.png',
+        'src': '/assets/images/icon-144x144.png',
         'size': '144x144'
     },
     {
-        'src': '/static/img/icon-152x152.png',
+        'src': '/assets/images/icon-152x152.png',
         'size': '152x152'
     },
     {
-        'src': '/static/img/icon-192x192.png',
+        'src': '/assets/images/icon-192x192.png',
         'size': '192x192'
     },
     {
-        'src': '/static/img/icon-384x384.png',
+        'src': '/assets/images/icon-384x384.png',
         'size': '384x384'
     },
     {
-        'src': '/static/img/icon-512x512.png',
+        'src': '/assets/images/icon-512x512.png',
         'size': '512x512'
     }
 ])
 APP_SPLASH_SCREEN = getattr(settings, 'APP_SPLASH_SCREEN', [
     {
-        'src': '/static/img/splash-640x1136.png',
+        'src': '/assets/images/splash-640x1136.png',
         'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
     },
     {
-        'src': '/static/img/splash-750x1334.png',
+        'src': '/assets/images/splash-750x1334.png',
         'media': '(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)'
     },
     {
-        'src': '/static/img/splash-1242x2208.png',
+        'src': '/assets/images/splash-1242x2208.png',
         'media': '(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)'
     },
     {
-        'src': '/static/img/splash-1125x2436.png',
+        'src': '/assets/images/splash-1125x2436.png',
         'media': '(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)'
     },
     {
-        'src': '/static/img/splash-828x1792.png',
+        'src': '/assets/images/splash-828x1792.png',
         'media': '(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)'
     },
     {
-        'src': '/static/img/splash-1242x2688.png',
+        'src': '/assets/images/splash-1242x2688.png',
         'media': '(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)'
     },
     {
-        'src': '/static/img/splash-1536x2048.png',
+        'src': '/assets/images/splash-1536x2048.png',
         'media': '(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)'
     },
     {
-        'src': '/static/img/splash-1668x2224.png',
+        'src': '/assets/images/splash-1668x2224.png',
         'media': '(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)'
     },
     {
-        'src': '/static/img/splash-1668x2388.png',
+        'src': '/assets/images/splash-1668x2388.png',
         'media': '(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)'
     },
     {
-        'src': '/static/img/splash-2048x2732.png',
+        'src': '/assets/images/splash-2048x2732.png',
         'media': '(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)'
     }
 

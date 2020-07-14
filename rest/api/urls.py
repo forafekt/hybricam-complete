@@ -9,12 +9,13 @@ app_name = 'api'
 urlpatterns = [
     path('', views.APIBaseView.as_view(), name='api'),
     path('', include('rest_framework.urls', namespace='rest_framework')),
-    path('accounts/', include('allauth.urls')),
+    path('allauth/', include('allauth.urls')),
     path('rest-auth/', include('rest_auth.urls')),
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
-    re_path('shop/', include('rest.shopping.urls')),
     re_path('rest-auth/', include('rest.users.urls')),
+    re_path('marketing/', include('rest.subscribe.urls'), name='subscribe'),
+    path('articles/', include("rest.articles.urls", namespace="articles")),
 ]
 
 """ APP URLS """

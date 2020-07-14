@@ -41,6 +41,8 @@ DEBUG = env.bool("DJANGO_DEBUG", default=0)
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:4200',
+    'http://localhost:8000',
+    'http://0.0.0.0:8000',
 )
 
 # AUTHENTICATION
@@ -74,16 +76,17 @@ LOGIN_URL = "account_login"
 # ------------------------------------------------------------------------------
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-    ],
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
 }
 
 # APPS
 # ------------------------------------------------------------------------------
 DJANGO_APPS = [
-    'material.admin',
-    'material.admin.default',
-    # 'django.contrib.admin',
+   # 'material.admin',
+   # 'material.admin.default',
+    'django.contrib.admin',
     'django.contrib.flatpages',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -103,13 +106,16 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'corsheaders',
+    'djng',
+    'taggit',
 ]
 LOCAL_APPS = [
     'rest.api',
-    'rest.shopping.apps.ShoppingConfig',
     'rest.users.apps.UsersConfig',
     'serve.apps.ServeConfig',
     'pages.apps.PagesConfig',
+    'rest.subscribe.apps.SubscribeConfig',
+    'rest.articles.apps.ArticlesConfig',
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -127,12 +133,13 @@ MIDDLEWARE = [
 
 # FORMS
 # ------------------------------------------------------------------------------
+#FORM_RENDERER = 'djng.forms.renderers.DjangoAngularTemplates'
 FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 # Static files (CSS, JavaScript, Images) & Templates
 # ------------------------------------------------------------------------------
-STATIC_URL = '/static/'
+STATIC_URL = '/assets/'
 STATIC_ROOT = os.path.join(ROOT_DIR, 'static_heroku')
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -140,22 +147,23 @@ STATICFILES_FINDERS = [
 ]
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# Tell Django to look in NGLOADER app for Static files and templates.
+# Tell Django to look in SERVE app for Static files and templates.
+# In debug it is possible to have a different static location for local dev if prefered.
 if DEBUG:
     DJANGO_TEMPLATE_DIRS = (
         os.path.join(ROOT_DIR, 'serve/dist/templates'),
     )
 
     STATICFILES_DIRS = (
-        os.path.join(ROOT_DIR, 'serve/dist/static'),
+        os.path.join(ROOT_DIR, 'serve/dist/assets'),
     )
-else:  # Change later for production if needed.
+else:  # Change later for production if needed. 
     DJANGO_TEMPLATE_DIRS = (
         os.path.join(ROOT_DIR, 'serve/dist/templates'),
     )
 
     STATICFILES_DIRS = (
-        os.path.join(ROOT_DIR, 'serve/dist/static'),
+        os.path.join(ROOT_DIR, 'serve/dist/assets'),
     )
 
 MEDIA_URL = '/media/'
@@ -202,7 +210,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # ------------------------------------------------------------------------------
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'CET'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
@@ -276,59 +284,127 @@ DEBUG_TOOLBAR_CONFIG = {
     "SHOW_TOOLBAR_CALLBACK": show_toolbar,
 }
 
-# Serve static files to template.
-STYLESHEETS = [
-    {
-        'src': 'https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css',
-    },
-    {
-        'src': 'https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css',
-    },
-    {
-        'src': '/static/css/style.css',
-    },
-    {
-        'src': '/static/css/util.css',
-    },
-]
 
-JAVASCRIPT = [
-    {
-        'src': 'https://code.jquery.com/jquery-3.2.1.slim.min.js',
-    },
-    {
-        'src': 'https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js',
-    },
-    {
-        'src': 'https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js',
-    },
-    {
-        'src': 'https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js',
-    },
-    {
-        'src': 'https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core@2.0.1/dist/tf-core.min.js',
-    },
-]
 FONTS = [
     {
         'src': 'https://fonts.googleapis.com/icon?family=Material+Icons',
     },
     {
-        'src': 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons',
+        'src': 'https://fonts.googleapis.com/css?family=Nunito:300,400,700,800&amp;display=swap',
+    }
+]
+
+
+# Serve static files to template.
+STYLESHEETS = [
+    {
+        'src': '/assets/ng_css/styles.css',
+    },
+    {
+        'src': 'https://cdn.lineicons.com/2.0/LineIcons.css',
+    },
+    {
+        'src': '',
+    },
+    {
+        'src': '',
+    },
+    {
+        'src': '',
+    },
+    {
+        'src': '',
+    },
+    {
+        'src': '',
+    },
+    
+]
+
+JAVASCRIPT = [
+    {
+        'src': '/assets/js/vendor/jquery-1.12.4.min.js',
+    },
+    {
+        'src': '/assets/js/vendor/modernizr-3.7.1.min.js',
+    },
+    {
+        'src': 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js',
+    },
+    {
+        'src': 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js',
+    },
+    {
+        'src': '/assets/js/slick.min.js',
+    },
+    {
+        'src': '/assets/js/imagesloaded.pkgd.min.js',
+    },
+    {
+        'src': '/assets/js/isotope.pkgd.min.js',
+    },
+    {
+        'src': '/assets/js/waypoints.min.js',
+    },
+    {
+        'src': '/assets/js/jquery.counterup.min.js',
+    },
+    {
+        'src': '/assets/js/circles.min.js',
+    },
+    {
+        'src': '/assets/js/jquery.appear.min.js',
+    },
+    {
+        'src': '/assets/js/wow.min.js',
+    },
+    {
+        'src': '/assets/js/headroom.min.js',
+    },
+    {
+        'src': '/assets/js/jquery.nav.js',
+    },
+    {
+        'src': '/assets/js/scrollIt.min.js',
+    },
+    {
+        'src': '/assets/js/jquery.magnific-popup.min.js',
+    },
+    {
+        'src': '/assets/js/main.js',
+    },
+    {
+        'src': '/assets/ng_js/runtime-es2015.js',
+    },
+    {
+        'src': '/assets/ng_js/runtime-es5.js',
+    },
+    {
+        'src': '/assets/ng_js/polyfills-es5.js',
+    },
+    {
+        'src': '/assets/ng_js/polyfills-es2015.js',
+    },
+    {
+        'src': '/assets/ng_js/main-es2015.js',
+    },
+    {
+        'src': '/assets/ng_js/main-es5.js',
     },
 ]
+
 
 # Customize Django admin
 MATERIAL_ADMIN_SITE = {
     'HEADER': 'DW STUDIO',  # Admin site header
     'TITLE': 'DASHBOARD',  # Admin site title
-    'FAVICON': 'path/to/favicon',  # Admin site favicon (path to static should be specified)
+    'FAVICON': '/assets/images/header-hero.jpg',  # Admin site favicon (path to static should be specified)
     'MAIN_BG_COLOR': 'black',  # Admin site main color, css color should be specified
     'MAIN_HOVER_COLOR': 'black',  # Admin site main hover color, css color should be specified
-    'PROFILE_PICTURE': 'path/to/image',  # Admin site profile picture (path to static should be specified)
-    'PROFILE_BG': 'path/to/image',  # Admin site profile background (path to static should be specified)
-    'LOGIN_LOGO': 'path/to/image',  # Admin site logo on login page (path to static should be specified)
-    'LOGOUT_BG': 'path/to/image',  # Admin site background on login/logout pages (path to static should be specified)
+    'PROFILE_PICTURE': '/assets/images/header-hero.jpg',  # Admin site profile picture (path to static should be specified)
+    'PROFILE_BG': '/assets/images/header-hero.jpg',  # Admin site profile background (path to static should be specified)
+    'LOGIN_LOGO': '/assets/images/header-hero.jpg',  # Admin site logo on login page (path to static should be specified)
+    'LOGOUT_BG': '/assets/images/header-hero.jpg',  # Admin site background on login/logout pages (path to static should be specified)
     'SHOW_THEMES': True,  # Show default admin themes button
     'TRAY_REVERSE': True,  # Hide object-tools and additional-submit-line by default
     'NAVBAR_REVERSE': True,  # Hide side navbar by default

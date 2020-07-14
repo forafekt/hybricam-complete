@@ -26,10 +26,12 @@ django-crispy-forms  # https://github.com/django-crispy-forms/django-crispy-form
 djangorestframework
 django-rest-auth
 
+
 # Angular
 # ------------------------------------------------------------------------------
 django-cors-headers
 django-material-admin
+django-angular
 
 # Channels
 # ------------------------------------------------------------------------------

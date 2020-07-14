@@ -1,38 +1,67 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar bg-dark">
-  <a class="navbar-brand" href="#">DW STUDIO</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'pages:home' %}">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'pages:about' %}">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">Dropdown
-        </a>
-        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+{% load static %}
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light sticky-top" data-aos="fade-left"
+     data-aos-anchor="#example-anchor"
+     data-aos-offset="500"
+     data-aos-duration="500">
+  <div class="container">
+    <a class="navbar-brand font-weight-bold title" href="/"><img src="{% static 'images/whalelogo.png' %}" style="width: 70px; height: auto;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item">
+          <a class="btn btn-secondary title waves-effect waves-light" href="#about" data-offset="90">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-secondary title waves-effect waves-light" href="#features" data-offset="90">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-secondary title waves-effect waves-light" href="#services" data-offset="90">Services</a>
+        </li>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Explore
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Blog</a>
+            <a class="dropdown-item" href="#">Learn</a>
+            <a class="dropdown-item" href="#">Idea</a>
+          </div>
         </div>
-      </li>
-    </ul>
-    <form class="form-inline">
-      <div class="md-form my-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      </div>
-    </form>
+        <li class="nav-item">
+          <a class="btn btn-secondary title waves-effect waves-light" href="#team" data-offset="90">Team</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-secondary title waves-effect waves-light" href="#contact" data-offset="90">Contact</a>
+        </li>
+      </ul>
+      <!-- Social Icon  -->
+      <ul class="navbar-nav nav-flex-icons">
+        <li class="nav-item">
+          <a class="btn btn-secondary waves-effect waves-light">
+            <i class="fab fa-facebook-f title"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-secondary waves-effect waves-light">
+            <i class="fab fa-twitter title"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-secondary waves-effect waves-light">
+            <i class="fab fa-instagram title"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
+
+
+
+
+
+

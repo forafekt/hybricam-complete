@@ -9,11 +9,9 @@ from django.urls import path, include
 from django.views import defaults as default_views
 
 urlpatterns = [
-                  path('', include('pages.urls')),  # pride templates and links to each page in app
                   path('', include('serve.urls')),  # Distribute main reusable data
                   path(settings.ADMIN_URL, admin.site.urls),  # Custom Dashboard
                   path('api/', include('rest.api.urls')),  # Captures any REST data and urls
-                  path('?=/', include('django.contrib.flatpages.urls')),  # for user to add own pages
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
