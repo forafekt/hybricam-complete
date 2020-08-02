@@ -15,7 +15,6 @@ urlpatterns = [
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
     re_path('rest-auth/', include('rest.users.urls')),
     re_path('marketing/', include('rest.subscribe.urls'), name='subscribe'),
-    path('articles/', include("rest.articles.urls", namespace="articles")),
 ]
 
 """ APP URLS """

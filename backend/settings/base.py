@@ -40,7 +40,9 @@ SECRET_KEY = env("SECRET_KEY", default="SECRET_KEY")
 DEBUG = env.bool("DJANGO_DEBUG", default=0)
 
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:4200',
+    'https://localhost:4200',
+    'https://192.168.8.101:4200',
+    'http://192.168.8.101:4200',
     'http://localhost:8000',
     'http://0.0.0.0:8000',
 )
@@ -84,10 +86,7 @@ REST_FRAMEWORK = {
 # APPS
 # ------------------------------------------------------------------------------
 DJANGO_APPS = [
-   # 'material.admin',
-   # 'material.admin.default',
     'django.contrib.admin',
-    'django.contrib.flatpages',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -95,7 +94,6 @@ DJANGO_APPS = [
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'django.forms',
-    'crispy_forms',
     'rest_framework',
     'rest_framework.authtoken',
 ]
@@ -103,11 +101,8 @@ THIRD_PARTY_APPS = [
     'rest_auth',
     'rest_auth.registration',
     'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
     'corsheaders',
     'djng',
-    'taggit',
 ]
 LOCAL_APPS = [
     'rest.api',
@@ -115,7 +110,6 @@ LOCAL_APPS = [
     'serve.apps.ServeConfig',
     'pages.apps.PagesConfig',
     'rest.subscribe.apps.SubscribeConfig',
-    'rest.articles.apps.ArticlesConfig',
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -135,7 +129,7 @@ MIDDLEWARE = [
 # ------------------------------------------------------------------------------
 #FORM_RENDERER = 'djng.forms.renderers.DjangoAngularTemplates'
 FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
-CRISPY_TEMPLATE_PACK = "bootstrap4"
+
 
 # Static files (CSS, JavaScript, Images) & Templates
 # ------------------------------------------------------------------------------
@@ -300,122 +294,29 @@ STYLESHEETS = [
     {
         'src': '/assets/ng_css/styles.css',
     },
-    {
-        'src': 'https://cdn.lineicons.com/2.0/LineIcons.css',
-    },
-    {
-        'src': '',
-    },
-    {
-        'src': '',
-    },
-    {
-        'src': '',
-    },
-    {
-        'src': '',
-    },
-    {
-        'src': '',
-    },
-    
+
 ]
 
 JAVASCRIPT = [
     {
-        'src': '/assets/js/vendor/jquery-1.12.4.min.js',
+        'src': '/assets/ng_js/runtime.js',
     },
     {
-        'src': '/assets/js/vendor/modernizr-3.7.1.min.js',
+        'src': '/assets/ng_js/polyfills.js',
     },
     {
-        'src': 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js',
+        'src': '/assets/ng_js/scripts.js',
     },
     {
-        'src': 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js',
+        'src': '/assets/ng_js/webphotofilter.js',
     },
     {
-        'src': '/assets/js/slick.min.js',
+        'src': '/assets/ng_js/webphotofilter/webphotofilter.ts3tvfuf.js',
     },
     {
-        'src': '/assets/js/imagesloaded.pkgd.min.js',
+        'src': '/assets/ng_js/webphotofilter/hgl7dero.entry.js',
     },
     {
-        'src': '/assets/js/isotope.pkgd.min.js',
-    },
-    {
-        'src': '/assets/js/waypoints.min.js',
-    },
-    {
-        'src': '/assets/js/jquery.counterup.min.js',
-    },
-    {
-        'src': '/assets/js/circles.min.js',
-    },
-    {
-        'src': '/assets/js/jquery.appear.min.js',
-    },
-    {
-        'src': '/assets/js/wow.min.js',
-    },
-    {
-        'src': '/assets/js/headroom.min.js',
-    },
-    {
-        'src': '/assets/js/jquery.nav.js',
-    },
-    {
-        'src': '/assets/js/scrollIt.min.js',
-    },
-    {
-        'src': '/assets/js/jquery.magnific-popup.min.js',
-    },
-    {
-        'src': '/assets/js/main.js',
-    },
-    {
-        'src': '/assets/ng_js/runtime-es2015.js',
-    },
-    {
-        'src': '/assets/ng_js/runtime-es5.js',
-    },
-    {
-        'src': '/assets/ng_js/polyfills-es5.js',
-    },
-    {
-        'src': '/assets/ng_js/polyfills-es2015.js',
-    },
-    {
-        'src': '/assets/ng_js/main-es2015.js',
-    },
-    {
-        'src': '/assets/ng_js/main-es5.js',
+        'src': '/assets/ng_js/main.js',
     },
 ]
-
-
-# Customize Django admin
-MATERIAL_ADMIN_SITE = {
-    'HEADER': 'DW STUDIO',  # Admin site header
-    'TITLE': 'DASHBOARD',  # Admin site title
-    'FAVICON': '/assets/images/header-hero.jpg',  # Admin site favicon (path to static should be specified)
-    'MAIN_BG_COLOR': 'black',  # Admin site main color, css color should be specified
-    'MAIN_HOVER_COLOR': 'black',  # Admin site main hover color, css color should be specified
-    'PROFILE_PICTURE': '/assets/images/header-hero.jpg',  # Admin site profile picture (path to static should be specified)
-    'PROFILE_BG': '/assets/images/header-hero.jpg',  # Admin site profile background (path to static should be specified)
-    'LOGIN_LOGO': '/assets/images/header-hero.jpg',  # Admin site logo on login page (path to static should be specified)
-    'LOGOUT_BG': '/assets/images/header-hero.jpg',  # Admin site background on login/logout pages (path to static should be specified)
-    'SHOW_THEMES': True,  # Show default admin themes button
-    'TRAY_REVERSE': True,  # Hide object-tools and additional-submit-line by default
-    'NAVBAR_REVERSE': True,  # Hide side navbar by default
-    'SHOW_COUNTS': True,  # Show instances counts for each model
-    'APP_ICONS': {
-        # Set icons for applications(lowercase), including 3rd party apps, {'application_name': 'material_icon_name',
-        # ...}
-        'sites': 'send',
-    },
-    'MODEL_ICONS': {
-        # Set icons for models(lowercase), including 3rd party models, {'model_name': 'material_icon_name', ...}
-        'site': 'contact_mail',
-    }
-}

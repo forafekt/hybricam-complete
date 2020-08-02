@@ -1,0 +1,12 @@
+<section id="camera-container">
+  <section class="camera-stream">
+    <div id="overlay"></div>
+    <canvas #snapshot id="canvas"></canvas>
+    <video #stream id="video" autoplay playsinline></video>
+  </section>
+  <section class="camera-controls" fxLayout="row" fxLayoutAlign="space-around center">
+    <button mat-button color="accent" *ngIf="viewingSnapshot" (click)="retakeSnapshot()">Retake</button>
+    <button type="button" class="snapshot" *ngIf="!viewingSnapshot" (click)="takeSnapshot()"></button>
+    <button mat-button color="accent" *ngIf="viewingSnapshot" (click)="confirmSnapshot()">Save</button>
+  </section>
+</section>

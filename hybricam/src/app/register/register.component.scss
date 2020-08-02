@@ -1,0 +1,43 @@
+.form-g .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+    width: 100% !important;
+  }
+.form-control {
+    width: 100% !important;
+}
+.form {
+    min-width: 150px;
+    max-width: 50%;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+  }
+  @media only screen and (max-width: 500px) {
+    .form {
+      min-width: 150px;
+      max-width: 100%;
+      width: 100%;
+      position: static;
+      top: 0;
+      left: 0;
+      margin-right: 0;
+      transform: translate(0, 0) 
+    }
+  }
+.full-width {
+    width: 100%;
+}
+
+.checkbox-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.checkbox-margin {
+  margin: 0 10px;
+}

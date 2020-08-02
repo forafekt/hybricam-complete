@@ -1,0 +1,58 @@
+<app-dialog-button hidden></app-dialog-button>
+<!-- Bottom toolbar take picture -->
+<mat-toolbar class="camera-tb">
+  <span>Take a picture</span>
+  <span class="spacer"></span>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" *ngIf="!nativeApproach" (click)="openCamera()">
+    <mat-icon>camera_enhanced</mat-icon>
+  </button>
+</mat-toolbar>
+
+<!-- Bottom toolbar save snap -->
+<section *ngIf="stream">
+  <mat-toolbar class="save-tb" color="">
+    <mat-buttons slot="end" *ngIf="stream">
+      <mat-button (click)="saveImage()">Save</mat-button>
+    </mat-buttons>
+  </mat-toolbar>
+ 
+  <!-- Big preview of selected filter -->
+  <div id="preview" *ngIf="stream">
+    <web-photo-filter 
+      [class.no-original]="selectedFilter != ''" 
+      [class.only-original]="selectedFilter == ''"
+      [src]="stream.data" 
+      keep="true" 
+      [filter]="selectedFilter" 
+      (filterLoad)="imageLoaded($event)">
+    </web-photo-filter>
+  </div>
+ 
+  <!-- Slides with thumbnail preview of all filters -->
+  <div class="filterPicker" [options]="slideOpts" *ngIf="stream">
+    <div *ngFor="let opts of filterOptions; let i = index;" tappable (click)="filter(i)">
+      
+      <div id="preview">
+        <web-photo-filter 
+          [class.no-original]="i > 0" 
+          [src]="stream.data" 
+          keep="false" 
+          [filter]="opts.value">
+        </web-photo-filter>
+        <button mat-button [class.selected]="i == selectedIndex">{{ opts.name }}</button>
+      </div>
+    </div>
+  </div>
+</section>
+<app-camera [hidden]="hiddenCamera" #appCamera (capture)="loadCaptureStream($event)"></app-camera>
+
+
+<!--<section [hidden]="!hiddenCamera"fxLayout="row" fxLayoutAlign="center  center" style="margin-bottom: 2rem">
+  <mat-slide-toggle (change)="changeApproachType()">{{nativeApproach ? 'Native' : 'WebRTC'}} Camera</mat-slide-toggle>
+</section>
+<section [hidden]="!hiddenCamera"fxLayout="row" fxLayoutAlign="center center">
+  <button *ngIf="!nativeApproach" mat-raised-button color="primary" (click)="openCamera()">
+  <mat-icon><span class="material-icons">camera_enhance</span></mat-icon></button>
+  <button *ngIf="nativeApproach" mat-raised-button color="primary" (click)="triggerCamera()">Open Native Camera</button>
+  <input type="file" capture="camera" accept="image/*" id="capture" name="cameraInput" (change)="onImageUpdate($event)" style="visibility: hidden;width: 0;height:0"/>
+</section>-->

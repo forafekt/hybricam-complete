@@ -2,7 +2,6 @@ import json
 
 from django import template
 from django.core.serializers.json import DjangoJSONEncoder
-from django.template.loader import get_template
 from django.utils.safestring import mark_safe
 
 from serve import app_settings
@@ -18,7 +17,9 @@ def ngjs(obj):
 
 @register.inclusion_tag('manifest/manifest_meta.html', takes_context=True)
 def manifest_meta(context):
-    # Pass all PWA_* settings into the template
+    """
+    Pass all PWA_* settings into the template
+    """
     return {
         setting_name: getattr(app_settings, setting_name)
         for setting_name in dir(app_settings)
@@ -28,7 +29,9 @@ def manifest_meta(context):
 
 @register.inclusion_tag('manifest/style.html', takes_context=True)
 def serve_css(context):
-    # Pass any style settings into the template
+    """
+    Pass any style settings into the template
+    """
     return {
         setting_name: getattr(app_settings, setting_name)
         for setting_name in dir(app_settings)
@@ -38,7 +41,9 @@ def serve_css(context):
 
 @register.inclusion_tag('manifest/js.html', takes_context=True)
 def serve_js(context):
-    # Pass any js settings into the template
+    """
+    Pass any js settings into the template
+    """
     return {
         setting_name: getattr(app_settings, setting_name)
         for setting_name in dir(app_settings)
@@ -48,7 +53,9 @@ def serve_js(context):
 
 @register.inclusion_tag('manifest/fonts.html', takes_context=True)
 def serve_fonts(context):
-    # Pass any fonts settings into the template
+    """
+    Pass any fonts settings into the template
+    """
     return {
         setting_name: getattr(app_settings, setting_name)
         for setting_name in dir(app_settings)

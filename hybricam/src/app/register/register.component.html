@@ -1,0 +1,47 @@
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit('Subscribed Successfully!', 'close')" class="form">
+    <section class="form-g">
+    <mat-form-field appearance="fill" class="full-width">
+        <label>First Name</label>
+        <input matInput type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+        <mat-error *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+            <mat-error *ngIf="f.firstName.errors.required">First Name is required</mat-error>
+        </mat-error>
+        </mat-form-field>
+    </section>
+    <section class="form-g">
+    <mat-form-field appearance="fill" class="full-width">
+        <label>Last Name</label>
+        <input matInput type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+        <mat-error *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+            <mat-error *ngIf="f.lastName.errors.required">Last Name is required</mat-error>
+        </mat-error>
+        </mat-form-field>
+    </section>
+    <section class="form-g">
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Enter your email</mat-label>
+        <input matInput formControlName="email" placeholder="name@example.com" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <mat-error *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <mat-error *ngIf="f.email.errors.required">Email is required</mat-error>
+            <mat-error *ngIf="f.email.errors.email">Email must be a valid email address</mat-error>
+        </mat-error>
+    </mat-form-field>
+    </section>
+
+    <section class="form-g checkbox-section">
+    <mat-label>Accept</mat-label>
+    <mat-checkbox type="checkbox" trueFalseValue [(ngModel)]="submitted" class="checkbox-margin" formControlName="accepted" trueValue="yes" falseValue="no" [ngClass]="{ 'is-invalid': submitted && f.accepted.errors }">
+        <mat-error *ngIf="submitted && f.accepted.errors" class="invalid-feedback">
+        <mat-error *ngIf="f.accepted.errors.required">This is required</mat-error>
+        </mat-error>
+        </mat-checkbox>
+    </section>
+    
+    <section class="form-g" >
+        <div *ngIf="registerForm.valid" mat-dialog-close>
+        <button mat-button>Register</button>
+        </div>
+    </section>
+</form>
+
