@@ -5,7 +5,7 @@ This project was developed on a clients need for a product event, where they nee
 allow the user to take a photo of the product and add filters to the picture then save or share the image. After the 
 event the client then needs to extract the data.
 
-##DEMO
+## DEMO
 * https://hybricam.herokuapp.com
 
 ## TODO:
