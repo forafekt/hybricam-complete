@@ -3,13 +3,17 @@
 Mobile-browser camera application developed with Angular, Django & Django REST.
 This project was developed on a clients need for a product event, where they need to retrieve customer information then 
 allow the user to take a photo of the product and add filters to the picture then save or share the image. After the 
-even the client then needs to extract the data.
+event the client then needs to extract the data.
 
 ## TODO:
-* Clean-up Service-worker and other PWA elements.
+* Clean-up serviceworker and other PWA elements.
 * Package the 'serve' app.
 * Add more dynamic to API.
 * Clean code.
+* Refresh page after closing/canceling camera.
+* Optimize permissions for other browsers.
+* Consider celery
+* Idea to develop a scraper for any hashed share from user to display as a social feed at app root.
 
 ## Getting Started
 
@@ -17,8 +21,6 @@ These instructions will get you a copy of the project up and running on your loc
 purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
-
-What things you need to install the software and how to install them
 
 ```
 Django Framework
@@ -40,14 +42,12 @@ cd hybricam
 npm install
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
 ## Running the tests
 
 For development you will need to run 2 localhosts in HTTPS.
 
 ### Certificates includes in project
-There is also a script in /hybricam/ssl/example.crt to create your own.
+There is also a script in /hybricam/ssl/ to create your own certificates.
 
 
 Django
