@@ -17,8 +17,6 @@ env.read_env(str(ROOT_DIR.path(".env")))
 
 APPS_DIR = ROOT_DIR.path("rest")
 
-# FRONT_ROOT_DIR = os.path.join(ROOT_DIR, 'frontend')
-
 # ROUTES
 # ------------------------------------------------------------------------------
 ASGI_APPLICATION = "backend.routing.application"
@@ -45,6 +43,7 @@ CORS_ORIGIN_WHITELIST = (
     'http://192.168.8.101:4200',
     'http://localhost:8000',
     'http://0.0.0.0:8000',
+    'https://hybricam.herokuapp.com',
 )
 
 # AUTHENTICATION
@@ -102,13 +101,11 @@ THIRD_PARTY_APPS = [
     'rest_auth.registration',
     'allauth',
     'corsheaders',
-    'djng',
 ]
 LOCAL_APPS = [
     'rest.api',
     'rest.users.apps.UsersConfig',
     'serve.apps.ServeConfig',
-    'pages.apps.PagesConfig',
     'rest.subscribe.apps.SubscribeConfig',
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -127,9 +124,7 @@ MIDDLEWARE = [
 
 # FORMS
 # ------------------------------------------------------------------------------
-#FORM_RENDERER = 'djng.forms.renderers.DjangoAngularTemplates'
 FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
-
 
 # Static files (CSS, JavaScript, Images) & Templates
 # ------------------------------------------------------------------------------
@@ -167,7 +162,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': DJANGO_TEMPLATE_DIRS,
-        'APP_DIRS': True,
+        #'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -278,7 +273,6 @@ DEBUG_TOOLBAR_CONFIG = {
     "SHOW_TOOLBAR_CALLBACK": show_toolbar,
 }
 
-
 FONTS = [
     {
         'src': 'https://fonts.googleapis.com/icon?family=Material+Icons',
@@ -287,7 +281,6 @@ FONTS = [
         'src': 'https://fonts.googleapis.com/css?family=Nunito:300,400,700,800&amp;display=swap',
     }
 ]
-
 
 # Serve static files to template.
 STYLESHEETS = [
@@ -320,3 +313,15 @@ JAVASCRIPT = [
         'src': '/assets/ng_js/main.js',
     },
 ]
+
+APP_NAME = 'Hybricam'
+APP_DESCRIPTION = "Mobile-browser camera application."
+APP_THEME_COLOR = '#fff'
+APP_BACKGROUND_COLOR = '#ffffff'
+APP_DISPLAY = 'standalone'
+APP_SCOPE = '/'
+APP_ORIENTATION = 'any'
+APP_START_URL = '/'
+APP_STATUS_BAR_COLOR = 'default'
+APP_DIR = 'ltr'
+APP_LANG = 'en-US'

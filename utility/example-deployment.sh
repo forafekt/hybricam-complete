@@ -8,3 +8,6 @@ sudo heroku container:release -a your-app web
 #sudo heroku run -a your-app python manage.py migrate
 #heroku run -a your-app redis-server --daemonize yes
 #heroku run -a your-app python manage.py runworker channels
+
+
+# COPY THIS FILE TO PROJECT ROOT TO RUN

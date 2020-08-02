@@ -1,7 +1,7 @@
 var HttpsProxyAgent = require('https-proxy-agent'); // Don't convert to ES6.  Error, when trying ng serve.
 var proxyConfig = [{
   context: '/api',
-  target: 'https://localhost:8000',
+  target: 'https://localhost:8000', // 'https://hybricam.herokuapp.com'
   secure: false
 }];
 

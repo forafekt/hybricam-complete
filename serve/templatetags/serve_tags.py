@@ -18,7 +18,7 @@ def ngjs(obj):
 @register.inclusion_tag('manifest/manifest_meta.html', takes_context=True)
 def manifest_meta(context):
     """
-    Pass all PWA_* settings into the template
+    Pass all APP_* settings into the template
     """
     return {
         setting_name: getattr(app_settings, setting_name)

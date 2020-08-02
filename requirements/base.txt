@@ -15,7 +15,6 @@ django
 django-allauth
 django-environ  # https://github.com/joke2k/django-environ
 django-redis  # https://github.com/niwinz/django-redis
-django-taggit  # https://github.com/alex/django-taggit
 sorl-thumbnail  # https://github.com/jazzband/sorl-thumbnail
 django-debug-toolbar  # https://github.com/jazzband/django-debug-toolbar
 django-extensions  # https://github.com/django-extensions/django-extensions
@@ -30,7 +29,6 @@ django-rest-auth
 # Angular
 # ------------------------------------------------------------------------------
 django-cors-headers
-django-angular
 
 # Channels
 # ------------------------------------------------------------------------------
@@ -39,8 +37,3 @@ channels-redis  # https://github.com/django/channels_redis
 raven
 environ
 daphne
-
-# Scrape
-# ------------------------------------------------------------------------------
-beautifulsoup4
-soupsieve

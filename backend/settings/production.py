@@ -11,7 +11,7 @@ SECRET_KEY = env(
     "SECRET_KEY",
     default="SECRET_KEY",
 )
-ALLOWED_HOSTS = env("ALLOWED_HOSTS", default="example.com")
+ALLOWED_HOSTS = env("ALLOWED_HOSTS", default="https://hybricam.herokuapp.com")
 
 
 # DATABASES

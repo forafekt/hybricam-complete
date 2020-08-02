@@ -20,10 +20,10 @@ RUN apk update \
     && apk del build-base
 
 
-RUN addgroup -S djangular \
-    && adduser -S -G djangular djangular
+RUN addgroup -S hybricam \
+    && adduser -S -G hybricam hybricam
 
-RUN pip install --upgrade pip
+RUN pip install update pip
 COPY ./requirements /requirements
 RUN pip install --no-cache-dir -r /requirements/production.txt \
     && rm -rf /requirements
@@ -35,9 +35,9 @@ RUN chmod +x /start.sh
 COPY . /app
 
 
-RUN chown -R djangular /app
+RUN chown -R hybricam /app
 
-USER djangular
+USER hybricam
 
 WORKDIR /app
 RUN python manage.py collectstatic --noinput

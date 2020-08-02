@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const baseUrl = 'https://192.168.8.101:8000/api/marketing/email-subscribe/'; // Change to live domain on deployment
+// https://hybricam.herokuapp.com
+// https://192.168.8.101:8000
+// Change to live domain on deployment
+const baseUrl = 'https://hybricam.herokuapp.com/api/marketing/email-subscribe/';
 @Injectable({
   providedIn: 'root'
 })

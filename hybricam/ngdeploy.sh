@@ -37,6 +37,9 @@ echo "Moving all files to static 'assets'...'"
 mv ../serve/dist/temp/* ../serve/dist/assets
 sleep 2
 
+echo "Moving filter-js 'assets/ng_js/'...'"
+mv ../serve/dist/assets/webphotofilter ../serve/dist/assets/ng_js/
+
 echo "Removing temp build directory...'"
 sudo rm -r ../serve/dist/temp
 sleep 2
